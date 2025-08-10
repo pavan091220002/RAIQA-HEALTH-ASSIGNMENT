@@ -41,7 +41,7 @@ const ListView = ({ numbers, sortOrder, onSort, onRemoveItem, onReset }) => {
 
       {numbers.length > 0 ? (
         <ul className="space-y-3">
-          {sortedNumbers.map((item) => (
+          {sortedNumbers.map((item, index) => (
             <li
               key={item.id}
               className={`flex items-center justify-between p-4 rounded-xl shadow-md transition-colors ${
@@ -52,9 +52,14 @@ const ListView = ({ numbers, sortOrder, onSort, onRemoveItem, onReset }) => {
                   : 'bg-white'
               }`}
             >
-              <span className="text-xl font-semibold text-gray-800">
-                {item.value}
-              </span>
+              <div className="flex items-center space-x-4">
+                <span className="text-xl font-semibold text-gray-800">
+                  {item.value}
+                </span>
+                <span className="text-sm font-bold text-gray-500">
+                  #{index + 1}
+                </span>
+              </div>
               <button
                 onClick={() => onRemoveItem(item.id)}
                 className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
